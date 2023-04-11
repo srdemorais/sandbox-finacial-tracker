@@ -6,6 +6,10 @@ class Stock < ApplicationRecord
       endpoint: 'https://cloud.iexapis.com/v1'
     )
 
-    new(ticker: ticker, name: client.company(ticker).company_name, last_price: client.quote(ticker)["latest_price"])
+    begin
+      new(ticker: ticker, name: client.company(ticker).company_name, last_price: client.quote(ticker)["latest_price"])
+    rescue => exception
+      return nil
+    end
   end
 end
