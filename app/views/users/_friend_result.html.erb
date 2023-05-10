@@ -1,0 +1,13 @@
+<div class="col-sm-9 no-right-padding no-left-padding" >
+  <%= render 'layouts/messages' %>
+</div>
+
+<% if @friend %>
+  <div class="card card-header results-block">
+    <strong>email: </strong> <%= @friend %>
+    <strong>first name: </strong> <%= @friend %>
+    <strong>last name: </strong> <%= @friend %>
+    <%= link_to 'Follow friend?', "#", 
+                                    class: "btn btn-xs btn-success", method: :post %>
+  </div>
+<% end %>
