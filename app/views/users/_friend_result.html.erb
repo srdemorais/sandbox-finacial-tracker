@@ -13,7 +13,15 @@
             <td>
                 <strong>Actions: </strong>
                 <%= link_to "View Profile", "#", class: "btn btn-xs btn-success" %>
-                <%= link_to 'Follow friend?', "#", class: "btn btn-xs btn-success", method: :post %>
+                <% if current_user.not_friends_with?(friend) %>
+                  <%= link_to 'Follow friend?', friendship_path(friend), 
+                              method: :delete, data: { confirm: "Are you sure?" }, 
+                              class: "btn btn-xs btn-success" %>
+                <% else %>
+                  <span class="badge badge-secondary">
+                    You are friends
+                  </span>
+                <% end %>
             </td>
           </tr>
         <% end %>
